@@ -14,11 +14,11 @@ public class Start {
     private static ActivityHandler activityHandler = new ActivityHandler();
 
     public static void main(String[] args) {
-        jdaBuilder = JDABuilder.createDefault("discord-token");
         executeBot();
     }
 
     private static void executeBot() {
+        jdaBuilder = JDABuilder.createDefault("discord-token");
         try {
             registerListener();
             jda = jdaBuilder.build();
@@ -26,6 +26,11 @@ public class Start {
         } catch(LoginException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void restartBot() {
+        jda.shutdown();
+        executeBot();
     }
 
     private static void registerListener() {

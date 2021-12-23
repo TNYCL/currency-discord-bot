@@ -23,8 +23,7 @@ public class ActivityHandler {
                 try {
                     jsonObject = (JSONObject) new JSONParser().parse(UtilWeb.getURLResponse("https://tlkur.com/refresh/doviz.php"));
                 } catch (ParseException e) {
-                    e.printStackTrace();
-                    getData();
+                    Start.restartBot();
                 }
                 ArrayList<Modules> newModules = new ArrayList<>();
                 newModules.add(new Modules(Type.USD, jsonObject.get("USDTRY").toString()));
