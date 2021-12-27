@@ -1,6 +1,6 @@
-package net.currency.handler;
+package net.currency.scheduler;
 
-import net.currency.Start;
+import net.currency.util.UtilPresence;
 import net.currency.util.UtilWeb;
 import net.dv8tion.jda.api.entities.Activity;
 import org.json.simple.JSONObject;
@@ -10,9 +10,10 @@ import org.json.simple.parser.ParseException;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
-public class ActivityTimer extends TimerTask {
+public class CurrencyTimer extends TimerTask {
 
     private ArrayList<Modules> modules = new ArrayList<>();
+    private int queue = 0;
 
     @Override
     public void run() {
@@ -26,7 +27,25 @@ public class ActivityTimer extends TimerTask {
         modules.add(new Modules(Type.USD, jsonObject.get("USDTRY").toString()));
         modules.add(new Modules(Type.EUR, jsonObject.get("EURTRY").toString()));
         modules.add(new Modules(Type.GBP, jsonObject.get("GBPTRY").toString()));
-        Start.getJda().getPresence().setActivity(Activity.playing("Dolar: " + jsonObject.get("USDTRY").toString()));
+        executeActivity(jsonObject);
+    }
+
+    public void executeActivity(JSONObject jsonObject) {
+        if(queue == 0) {
+            UtilPresence.setActivity(Activity.playing("Dolar: " + jsonObject.get("USDTRY").toString()));
+            this.queue++;
+            return;
+        }
+        if(queue == 1) {
+            UtilPresence.setActivity(Activity.playing("Euro: " + jsonObject.get("EURTRY").toString()));
+            this.queue++;
+            return;
+        }
+        if(queue == 2) {
+            UtilPresence.setActivity(Activity.playing("Sterlin: " + jsonObject.get("GBPTRY").toString()));
+            this.queue = 0;
+            return;
+        }
     }
 
     public ArrayList<Modules> getModules() {

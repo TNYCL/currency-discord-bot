@@ -19,8 +19,6 @@ public class UtilWeb {
             encoding = encoding == null ? "UTF-8" : encoding;
             String body = IOUtils.toString(in, encoding);
             return body;
-        } catch(MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
