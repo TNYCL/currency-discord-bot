@@ -1,17 +1,18 @@
 package net.currency;
 
-import net.currency.handler.ActivityHandler;
+import net.currency.handler.ActivityTimer;
 import net.currency.listener.Currency;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 
 import javax.security.auth.login.LoginException;
+import java.util.Timer;
 
 public class Start {
 
     private static JDABuilder jdaBuilder;
     private static JDA jda;
-    private static ActivityHandler activityHandler = new ActivityHandler();
+    private static ActivityTimer activityTimer = new ActivityTimer();
 
     public static void main(String[] args) {
         executeBot();
@@ -22,15 +23,11 @@ public class Start {
         try {
             registerListener();
             jda = jdaBuilder.build();
-            activityHandler.getData();
+            Timer timer = new Timer();
+            timer.schedule(activityTimer, 0, 5000);
         } catch(LoginException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public static void restartBot() {
-        jda.shutdown();
-        executeBot();
     }
 
     private static void registerListener() {
@@ -41,10 +38,6 @@ public class Start {
         return jda;
     }
 
-    public static JDABuilder getJdaBuilder() {
-        return jdaBuilder;
-    }
-
-    public static ActivityHandler getActivityHandler() { return activityHandler; }
+    public static ActivityTimer getActivityHandler() { return activityTimer; }
 
 }
