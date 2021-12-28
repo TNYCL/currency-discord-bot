@@ -8,8 +8,8 @@ import java.util.List;
 public abstract class CommandModule implements CommandHandler {
 
     private String name;
-    private List<String> aliases;
     private String prefix;
+    private List<String> aliases;
 
     public CommandModule(String name, String prefix, String... aliases) {
         this.name = name;
@@ -21,9 +21,12 @@ public abstract class CommandModule implements CommandHandler {
         return this.name;
     }
 
-    public List<String> getAliases() { return this.aliases; }
-
     public String getPrefix() {
         return this.prefix;
     }
+
+    public List<String> getAliases() {
+        return this.aliases;
+    }
+
 }

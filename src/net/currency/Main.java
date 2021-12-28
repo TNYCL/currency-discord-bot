@@ -1,8 +1,10 @@
 package net.currency;
 
+import net.currency.listener.currency.EUR;
+import net.currency.listener.currency.GBP;
 import net.currency.listener.currency.USD;
 import net.currency.scheduler.CurrencyTimer;
-import net.currency.listener.Commands;
+import net.currency.listener.CommandAdapter;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 
@@ -13,7 +15,7 @@ public class Main {
 
     private static JDABuilder jdaBuilder;
     private static JDA jda;
-    private static Commands commands = new Commands();
+    private static CommandAdapter commands = new CommandAdapter();
     private static CurrencyTimer currencyTimer = new CurrencyTimer();
 
     public static void main(String[] args) {
@@ -31,7 +33,12 @@ public class Main {
         }
     }
 
-    private static void registerCustomCommands() { commands.registerCommands(new USD()); }
+    private static void registerCustomCommands() {
+        commands.registerCommands(new USD());
+        commands.registerCommands(new EUR());
+        commands.registerCommands(new GBP());
+    }
+
     private static void registerListener() {
         registerCustomCommands();
         jdaBuilder.addEventListeners(commands);

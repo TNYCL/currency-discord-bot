@@ -6,15 +6,12 @@ import net.currency.module.CommandModule;
 import net.currency.scheduler.CurrencyTimer;
 import net.dv8tion.jda.api.events.message.GenericMessageEvent;
 
-public class USD extends CommandModule {
+public class EUR extends CommandModule {
 
-    public USD() {
-        super("dolar", Settings.prefix, "usd", "rte");
-    }
+    public EUR() { super("euro", Settings.prefix, "eur", "avrupa"); }
 
     @Override
     public void executeCommand(GenericMessageEvent event) {
-        event.getChannel().sendMessage("Dolar: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.USD).getValue()).queue();
+        event.getChannel().sendMessage("Euro: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.EUR).getValue()).queue();
     }
-
 }

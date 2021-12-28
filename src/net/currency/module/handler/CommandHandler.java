@@ -1,9 +1,9 @@
 package net.currency.module.handler;
 
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.GenericMessageEvent;
 
 public interface CommandHandler {
 
-    public void executeCommand(MessageReceivedEvent event);
+    public void executeCommand(GenericMessageEvent event);
 
 }
