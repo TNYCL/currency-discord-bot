@@ -1,8 +1,6 @@
 package net.currency;
 
-import net.currency.listener.currency.EUR;
-import net.currency.listener.currency.GBP;
-import net.currency.listener.currency.USD;
+import net.currency.listener.currency.*;
 import net.currency.scheduler.CurrencyTimer;
 import net.currency.listener.CommandAdapter;
 import net.dv8tion.jda.api.JDA;
@@ -27,7 +25,11 @@ public class Main {
         try {
             registerListener();
             jda = jdaBuilder.build();
-            new Timer().schedule(currencyTimer, 0, Settings.activityChangeSec*1000);
+            try {
+                new Timer().schedule(currencyTimer, 0, Settings.activityChangeSec*1000);
+            } catch(Exception e) {
+                System.exit(0);
+            }
         } catch(LoginException e) {
             System.out.println(e.getMessage());
         }
@@ -37,6 +39,14 @@ public class Main {
         commands.registerCommands(new USD());
         commands.registerCommands(new EUR());
         commands.registerCommands(new GBP());
+        commands.registerCommands(new CHF());
+        commands.registerCommands(new SAR());
+        commands.registerCommands(new BTC());
+        commands.registerCommands(new ETH());
+        commands.registerCommands(new XRP());
+        commands.registerCommands(new BCH());
+        commands.registerCommands(new LTC());
+        commands.registerCommands(new DOGE());
     }
 
     private static void registerListener() {

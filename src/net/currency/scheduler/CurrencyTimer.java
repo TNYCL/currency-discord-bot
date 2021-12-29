@@ -27,6 +27,14 @@ public class CurrencyTimer extends TimerTask {
         modules.add(new Modules(Type.USD, jsonObject.get("USDTRY").toString()));
         modules.add(new Modules(Type.EUR, jsonObject.get("EURTRY").toString()));
         modules.add(new Modules(Type.GBP, jsonObject.get("GBPTRY").toString()));
+        modules.add(new Modules(Type.CHF, jsonObject.get("CHFTRY").toString()));
+        modules.add(new Modules(Type.SAR, jsonObject.get("SARTRY").toString()));
+        modules.add(new Modules(Type.BTC, jsonObject.get("BTCUSD").toString()));
+        modules.add(new Modules(Type.ETH, jsonObject.get("ETHUSD").toString()));
+        modules.add(new Modules(Type.XRP, jsonObject.get("XRPUSD").toString()));
+        modules.add(new Modules(Type.BCH, jsonObject.get("BCHUSD").toString()));
+        modules.add(new Modules(Type.LTC, jsonObject.get("LTCUSD").toString()));
+        modules.add(new Modules(Type.DOGE, jsonObject.get("DOGEUSD").toString()));
         executeActivity(jsonObject);
     }
 
@@ -79,7 +87,15 @@ public class CurrencyTimer extends TimerTask {
     public enum Type {
         USD,
         EUR,
-        GBP
+        GBP,
+        CHF,
+        SAR,
+        BTC,
+        ETH,
+        XRP,
+        BCH,
+        LTC,
+        DOGE
     }
 
 }

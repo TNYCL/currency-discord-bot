@@ -12,6 +12,7 @@ public class GBP extends CommandModule {
 
     @Override
     public void executeCommand(GenericMessageEvent event) {
-        event.getChannel().sendMessage("Sterlin: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.GBP).getValue()).queue();
+        event.getChannel().sendMessage("Sterlin: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.GBP).getValue() + " TL").queue();
     }
+
 }

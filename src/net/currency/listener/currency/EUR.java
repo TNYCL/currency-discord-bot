@@ -12,6 +12,7 @@ public class EUR extends CommandModule {
 
     @Override
     public void executeCommand(GenericMessageEvent event) {
-        event.getChannel().sendMessage("Euro: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.EUR).getValue()).queue();
+        event.getChannel().sendMessage("Euro: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.EUR).getValue() + " TL").queue();
     }
+
 }

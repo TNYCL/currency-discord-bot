@@ -6,15 +6,15 @@ import net.currency.module.CommandModule;
 import net.currency.scheduler.CurrencyTimer;
 import net.dv8tion.jda.api.events.message.GenericMessageEvent;
 
-public class USD extends CommandModule {
+public class BTC extends CommandModule {
 
-    public USD() {
-        super("dolar", Settings.prefix, "usd", "rte");
+    public BTC() {
+        super("bitcoin", Settings.prefix, "btc", "satoshi");
     }
 
     @Override
     public void executeCommand(GenericMessageEvent event) {
-        event.getChannel().sendMessage("Dolar: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.USD).getValue() + " TL").queue();
+        event.getChannel().sendMessage("Bitcoin: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.BTC).getValue() + " USD").queue();
     }
 
 }

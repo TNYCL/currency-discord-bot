@@ -6,15 +6,15 @@ import net.currency.module.CommandModule;
 import net.currency.scheduler.CurrencyTimer;
 import net.dv8tion.jda.api.events.message.GenericMessageEvent;
 
-public class USD extends CommandModule {
+public class LTC extends CommandModule {
 
-    public USD() {
-        super("dolar", Settings.prefix, "usd", "rte");
+    public LTC() {
+        super("litecoin", Settings.prefix, "ltc", "lcoin", "lite");
     }
 
     @Override
     public void executeCommand(GenericMessageEvent event) {
-        event.getChannel().sendMessage("Dolar: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.USD).getValue() + " TL").queue();
+        event.getChannel().sendMessage("Litecoin: " + Main.getCurrencyTimer().getValueWithType(CurrencyTimer.Type.LTC).getValue() + " USD").queue();
     }
 
 }
